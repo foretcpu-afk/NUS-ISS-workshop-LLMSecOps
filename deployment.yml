@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpt-hf-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gpt-hf-pod
+  template:
+    metadata:
+      labels:
+        app: gpt-hf-pod
+    spec:
+      containers:
+      - name: gpt-hf
+        image: <Docker_ID>/gpt-hf:latest
+        ports:
+        - containerPort: 8000
